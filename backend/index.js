@@ -61,7 +61,7 @@ app.post("/order/validate", async (req, res) => {
 
 app.post("/create-checkout-session", async (req, res) => {
   const { products } = req.body;
-  console.log(products);
+  // console.log(products);
 
   const lineItems = products.map((product) => ({
     price_data: {
@@ -84,8 +84,8 @@ app.post("/create-checkout-session", async (req, res) => {
     // ui_mode: "embeded",
     line_items: lineItems,
     mode: "payment",
-    success_url: `http://localhost:5173/success`,
-    cancel_url: `http://localhost:5173/cart`,
+    success_url: `${process.env.BASE_URL}/success`,
+    cancel_url: `${process.env.BASE_URL}/cart`,
   });
 
   res.json({ url: session.url });
