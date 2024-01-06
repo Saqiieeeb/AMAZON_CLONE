@@ -88,7 +88,7 @@ app.post("/create-checkout-session", async (req, res) => {
     cancel_url: `http://localhost:5173/cart`,
   });
 
-  res.json({ id: session.id });
+  res.json({ url: session.url });
 });
 
 app.listen(PORT, () => {
